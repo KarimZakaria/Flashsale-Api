@@ -23,7 +23,6 @@ class PaymentWebhookController extends Controller
             'status' => 'required|in:paid,failed',
         ]);
 
-        // 1) Check if this payment_id already processed (idempotency)
         $order = $this->orders->findByPaymentId($data['payment_id']);
 
         if ($order) {
@@ -34,18 +33,12 @@ class PaymentWebhookController extends Controller
             ]);
         }
 
-        // 2) Find order by hold_id? Or payment_id? If payment_id comes first, you can handle "out-of-order" later
-
-        // For simplicity, let's assume you attach payment_id now:
-        // You must have sent the hold_id in your webhook if needed
-        // Here we just update the latest pending order for demo
 
         $pendingOrder = \App\Models\Order::where('status', 'pending')->latest()->first();
         if (!$pendingOrder) {
             return response()->json(['message' => 'No pending order found'], 404);
         }
 
-        // 3) Update order status and attach payment_id
         $updatedOrder = $this->orders->updateStatus($pendingOrder, $data['status'], $data['payment_id']);
 
         return response()->json([
