@@ -25,6 +25,9 @@ This API allows:
 
 ## API Endpoints
 
+### Get Products
+GET /api/products/1    
+
 ### Create Hold
 POST /api/holds
 ```json
@@ -33,20 +36,23 @@ POST /api/holds
   "quantity": 2,
   "user_id": 1
 }
+```
 
-Create Order
+### Create Order
 POST /api/orderds
 ```json
 {
   "hold_id": 1
 }
+```
 
-Create Payment webhook
+### Create Payment webhook
 POST /api/payments/webhook
 ```json
 {
   "payment_id": "TX12345",
-  "status": "paid"  // or "cancelled"
+  "status": "paid"  // or "failure"
 }
+
 
 
