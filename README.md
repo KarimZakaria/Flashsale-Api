@@ -23,6 +23,46 @@ This API allows:
 6. Run queue worker: `php artisan queue:work redis --tries=3 -vvvv`
 7. Serve app: `php artisan serve`
 
+
+## Environment Setup (.env)
+Update your .env with the required configuration:
+```bash
+
+APP_NAME=FlashsaleApi
+APP_ENV=local
+APP_KEY=base64:xxxxxx
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=flashsale
+DB_USERNAME=root
+DB_PASSWORD=
+
+CACHE_DRIVER=redis
+REDIS_CLIENT=phpredis
+QUEUE_CONNECTION=redis
+TELESCOPE_ENABLED=true
+TELESCOPE_JOBS_WATCHER=true
+TELESCOPE_QUEUE_CONNECTION=redis
+TELESCOPE_QUEUE=default
+```
+
+## Redis Configuration
+
+### Install Redis (Linux)
+```bash
+sudo apt install redis-server
+sudo systemctl enable redis
+sudo systemctl start redis
+```
+### Verify Redis 
+```bash
+redis-cli ping
+```
+
 ## API Endpoints
 
 ### Get Products
