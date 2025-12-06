@@ -17,11 +17,13 @@ This API allows:
 
 1. Clone repo: `git clone https://github.com/KarimZakaria/Flashsale-Api`
 2. Install dependencies: `composer install`
-3. Copy env: `cp .env.example .env` and configure DB + Redis
-4. Generate app key: `php artisan key:generate`
-5. Run migrations & seeders: `php artisan migrate --seed`
-6. Run queue worker: `php artisan queue:work redis --tries=3 -vvvv`
-7. Serve app: `php artisan serve`
+3. Install dependencies: `composer install`  
+   > If you have an issue with Redis installation, please see [Redis Configuration](#redis-configuration) below.
+4. Copy env: `cp .env.example .env` and configure DB + Redis
+5. Generate app key: `php artisan key:generate`
+6. Run migrations & seeders: `php artisan migrate --seed`
+7. Run queue worker: `php artisan queue:work redis --tries=3 -vvvv`
+8. Serve app: `php artisan serve`
 
 
 ## Environment Setup (.env)
